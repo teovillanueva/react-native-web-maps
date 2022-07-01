@@ -9,7 +9,7 @@ const config = {
   title: 'react-native-web-maps',
   tagline: 'Cross platform maps for react & react-native',
   url: 'https://teovillanueva.github.io',
-  baseUrl: '/react-native-web-maps',
+  baseUrl: '/react-native-web-maps/',
   trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
