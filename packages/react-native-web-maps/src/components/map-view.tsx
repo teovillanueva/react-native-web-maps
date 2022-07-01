@@ -186,7 +186,6 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
       zoom={props.initialCamera?.zoom || 3} // TODO: Normalize value
       heading={props.initialCamera?.heading}
       tilt={props.initialCamera?.pitch}
-      on
       onClick={(e) =>
         props.onPress?.({
           nativeEvent: {

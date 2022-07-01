@@ -16,8 +16,8 @@
     ]
   },
   "scripts": {
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "example": "yarn --cwd example",
+    "lib": "yarn --cwd packages/react-native-web-maps",
     "docs": "yarn --cwd docs"
   },
   "repository": "https://github.com/teovillanueva/react-native-web-maps",
