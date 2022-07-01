@@ -1,0 +1,99 @@
+{
+  "name": "@teovilla/react-native-web-maps",
+  "version": "0.1.0",
+  "description": "test",
+  "main": "dist/commonjs/index",
+  "module": "dist/module/index",
+  "types": "dist/typescript/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "files": [
+    "src",
+    "dist",
+    "!dist/typescript/example",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__"
+  ],
+  "scripts": {
+    "test": "jest",
+    "typescript": "tsc --noEmit",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "prepare": "bob build",
+    "release": "release-it",
+    "build:watch": "yarn nodemon --exec 'yarn bob build' --ignore dist --watch src -e ts,tsx"
+  },
+  "keywords": [
+    "react-native",
+    "react-native-web",
+    "react-native-maps",
+    "maps",
+    "ios",
+    "android"
+  ],
+  "repository": "https://github.com/teovillanueva/react-native-web-maps",
+  "author": "Teodoro Villanueva <teodoro2102@gmail.com> (https://github.com/teovillanueva)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/teovillanueva/react-native-web-maps/issues"
+  },
+  "homepage": "https://github.com/teovillanueva/react-native-web-maps#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@types/geojson": "^7946.0.8",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.66.13",
+    "jest": "^28.1.1",
+    "nodemon": "^2.0.18",
+    "react": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-builder-bob": "^0.18.2",
+    "react-native-maps": "^0.31.1",
+    "release-it": "^15.0.0",
+    "typescript": "^4.5.2"
+  },
+  "resolutions": {
+    "@types/react": "17.0.21"
+  },
+  "peerDependencies": {
+    "@react-google-maps/api": "*",
+    "react": "*",
+    "react-native": "*"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular"
+      }
+    }
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "dist",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "../../tsconfig.build.json"
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "@react-google-maps/api": "^2.12.0"
+  }
+}

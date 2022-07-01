@@ -1,24 +1,33 @@
 {
-  "name": "@teovillanueva/react-native-web-maps-example",
-  "description": "Example app for @teovillanueva/react-native-web-maps",
-  "version": "0.0.1",
-  "private": true,
+  "name": "example",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
-    "postinstall": "patch-package"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject"
   },
   "dependencies": {
+    "@teovilla/react-native-web-maps": "*",
+    "expo-yarn-workspaces": "^2.0.0",
+    "expo": "~45.0.0",
+    "expo-location": "~14.2.2",
+    "expo-status-bar": "~1.3.0",
     "react": "17.0.2",
-    "react-native": "0.68.2"
+    "react-dom": "17.0.2",
+    "react-native": "0.68.2",
+    "react-native-maps": "0.30.2",
+    "react-native-web": "0.17.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/runtime": "^7.12.5",
-    "babel-plugin-module-resolver": "^4.1.0",
-    "metro-react-native-babel-preset": "^0.67.0",
-    "patch-package": "^6.4.7",
-    "postinstall-postinstall": "^2.1.0"
-  }
+    "@babel/core": "^7.12.9",
+    "@expo/webpack-config": "^0.16.25",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.66.13",
+    "typescript": "~4.3.5",
+    "webpack-watch-files-plugin": "^1.2.1"
+  },
+  "private": true
 }
