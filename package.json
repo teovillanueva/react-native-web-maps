@@ -22,7 +22,8 @@
     "example": "yarn --cwd example",
     "lib": "yarn --cwd packages/react-native-web-maps",
     "docs": "yarn --cwd docs",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "cd ./example && expo-yarn-workspaces postinstall"
   },
   "repository": "https://github.com/teovillanueva/react-native-web-maps",
   "author": "Teodoro Villanueva <teodoro2102@gmail.com> (https://github.com/teovillanueva)",

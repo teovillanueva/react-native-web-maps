@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, Platform } from 'react-native';
 import MapView, { Circle, Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 
-const MOCK_POSITION = true;
+const MOCK_POSITION = false;
+const SHOW_LOCATION_BUBBLE = false;
 
 export default function App() {
   const [permission] = Location.useForegroundPermissions({ request: true });
@@ -27,12 +28,6 @@ export default function App() {
     }
   }, [permission?.granted]);
 
-  useEffect(() => {
-    if (position) {
-      mapRef.current?.animateCamera({ center: position.coords, zoom: 16 });
-    }
-  }, [position, mapRef]);
-
   return (
     <View style={styles.container}>
       <MapView
@@ -40,14 +35,21 @@ export default function App() {
         provider="google"
         onPress={(e) => console.log(e.nativeEvent)}
         style={{ flex: 1 }}
+        showsUserLocation
+        onUserLocationChange={(e) =>
+          mapRef.current?.animateCamera({
+            center: e.nativeEvent.coordinate,
+            zoom: 16,
+          })
+        }
         loadingFallback={
           <View>
             <Text>Loading</Text>
           </View>
         }
-        googleMapsApiKey="YOUR_GOOGLE_MAPS_API_KEY_HERE"
+        googleMapsApiKey={process.env.GOOGLE_MAPS_API_KEY}
       >
-        {position && (
+        {SHOW_LOCATION_BUBBLE && position && (
           <>
             <Marker
               anchor={{ x: 0.5, y: 1 }}

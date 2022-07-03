@@ -64,3 +64,4 @@ android/keystores/debug.keystore
 dist/
 .turbo
 package-lock.json
+.env

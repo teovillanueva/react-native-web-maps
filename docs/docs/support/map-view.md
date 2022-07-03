@@ -24,16 +24,16 @@ title: MapView ✅
 | `mapType`                         | ❌     |                                                                |
 | `customMapStyle`                  | 🌲     |                                                                |
 | `userInterfaceStyle`              | ❌     |                                                                |
-| `showsUserLocation`               | 🌲     |                                                                |
+| `showsUserLocation`               | ✅     |                                                                |
 | `userLocationPriority`            | ❌     |                                                                |
 | `userLocationUpdateInterval`      | 🌲     |                                                                |
 | `userLocationFastestInterval`     | ❌     |                                                                |
 | `userLocationAnnotationTitle`     | ❌     |                                                                |
-| `followsUserLocation`             | 🌲     |                                                                |
+| `followsUserLocation`             | ✅     |                                                                |
 | `userLocationCalloutEnabled`      | ❌     |                                                                |
 | `showsMyLocationButton`           | 🌲     |                                                                |
 | `showsPointsOfInterest`           | ❌     |                                                                |
-| `showsCompass`                    | 🌲     |                                                                |
+| `showsCompass`                    | ❌     |                                                                |
 | `showsScale`                      | ✅     |                                                                |
 | `showsBuildings`                  | 🤔     |                                                                |
 | `showsTraffic`                    | ❌     |                                                                |
@@ -70,10 +70,10 @@ To access event data, you will need to use `e.nativeEvent`. For example, `onPres
 | `onKmlReady`              | ❌     |
 | `onRegionChange`          | 🤔     |
 | `onRegionChangeComplete`  | 🤔     |
-| `onUserLocationChange`    | ❌     |
+| `onUserLocationChange`    | ✅     |
 | `onPress`                 | ✅     |
 | `onDoublePress`           | ✅     |
-| `onPanDrag`               | 🤔     |
+| `onPanDrag`               | ✅     |
 | `onPoiClick`              | 🤔     |
 | `onLongPress`             | 🤔     |
 | `onMarkerPress`           | ❌     |

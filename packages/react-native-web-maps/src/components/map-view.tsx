@@ -4,6 +4,7 @@ import React, {
   forwardRef,
   memo,
   useCallback,
+  useEffect,
   useImperativeHandle,
   useState,
 } from 'react';
@@ -24,8 +25,16 @@ import {
   logMethodNotImplementedWarning,
   logDeprecationWarning,
 } from '../utils/log';
+import { useUserLocation } from '../hooks/use-user-location';
+import { UserLocationMarker } from './user-location-marker';
 
 function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
+  const userLocation = useUserLocation({
+    requestPermission:
+      props.showsUserLocation || !!props.onUserLocationChange || false,
+    onUserLocationChange: props.onUserLocationChange,
+  });
+
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: props.googleMapsApiKey || '',
   });
@@ -171,6 +180,15 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
     [props.onMapReady]
   );
 
+  useEffect(() => {
+    if (props.followsUserLocation && userLocation) {
+      map?.panTo({
+        lat: userLocation.coords.latitude,
+        lng: userLocation.coords.longitude,
+      });
+    }
+  }, [props.followsUserLocation, userLocation]);
+
   if (props.provider !== 'google') {
     console.warn(
       '[WARNING] `react-native-web-maps` only suppots google for now. Please pass "google" as provider in props'
@@ -186,6 +204,18 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
       zoom={props.initialCamera?.zoom || 3} // TODO: Normalize value
       heading={props.initialCamera?.heading}
       tilt={props.initialCamera?.pitch}
+      onDrag={() => {
+        const center = map?.getCenter();
+
+        props.onPanDrag?.(
+          mapMouseEventToMapEvent(
+            null,
+            center && { latitude: center.lat(), longitude: center.lng() },
+            map,
+            undefined
+          )
+        );
+      }}
       onClick={(e) =>
         props.onPress?.(mapMouseEventToMapEvent(e, null, map, 'press'))
       }
@@ -213,6 +243,9 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
         ...(props.options || {}),
       }}
     >
+      {props.showsUserLocation && userLocation && (
+        <UserLocationMarker coordinates={userLocation.coords} />
+      )}
       {props.children}
     </GoogleMap>
   ) : (
