@@ -1,10 +1,10 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import {
   Marker as GMMarker,
   OverlayView as GMOverlayView,
   useGoogleMap,
 } from '@react-google-maps/api';
-import type { MapEvent, MarkerProps } from 'react-native-maps';
+import type { MarkerProps } from 'react-native-maps';
 import { mapMouseEventToMapEvent } from 'src/utils/mouse-event';
 
 export function Marker(props: MarkerProps) {

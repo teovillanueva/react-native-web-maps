@@ -12,7 +12,6 @@ import type {
   Camera,
   EdgePadding,
   LatLng,
-  MapEvent,
   MapViewProps,
   Point,
   Region,

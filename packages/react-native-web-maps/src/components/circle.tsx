@@ -1,6 +1,6 @@
 import React from 'react';
 import { Circle as GMCircle, useGoogleMap } from '@react-google-maps/api';
-import type { MapEvent, MapCircleProps } from 'react-native-maps';
+import type { MapCircleProps } from 'react-native-maps';
 import { mapMouseEventToMapEvent } from 'src/utils/mouse-event';
 
 export function Circle(props: MapCircleProps) {

@@ -1,6 +1,6 @@
 {
   "name": "@teovilla/react-native-web-maps",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "test",
   "main": "dist/commonjs/index",
   "module": "dist/module/index",
@@ -39,7 +39,8 @@
   },
   "homepage": "https://github.com/teovillanueva/react-native-web-maps#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
