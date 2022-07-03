@@ -1,7 +1,7 @@
 {
   "name": "@teovilla/react-native-web-maps",
   "version": "0.1.2",
-  "description": "test",
+  "description": "Cross platform maps for react & react-native",
   "main": "dist/commonjs/index",
   "module": "dist/module/index",
   "types": "dist/typescript/index.d.ts",
@@ -19,9 +19,10 @@
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint",
-    "prepare": "bob build",
-    "release": "release-it",
-    "build:watch": "yarn nodemon --exec 'yarn bob build' --ignore dist --watch src -e ts,tsx"
+    "prepare": "yarn build",
+    "build": "bob build",
+    "release": "cp ../../README.md ./README.md && release-it",
+    "dev": "yarn nodemon --exec 'yarn bob build' --ignore dist --watch src -e ts,tsx"
   },
   "keywords": [
     "react-native",

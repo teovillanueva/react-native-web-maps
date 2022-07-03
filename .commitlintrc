@@ -1,5 +1,15 @@
 {
   "extends": [
     "@commitlint/config-conventional"
+  ],
+  "scope-enum": [
+    2,
+    "always",
+    [
+      "docs",
+      "lib",
+      "example",
+      "root"
+    ]
   ]
 }
