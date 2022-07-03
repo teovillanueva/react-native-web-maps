@@ -19,6 +19,7 @@ import type {
   SnapshotOptions,
 } from 'react-native-maps';
 import type RNMapView from 'react-native-maps';
+import { mapMouseEventToMapEvent } from 'src/utils/mouse-event';
 import { transformRNCameraObject } from '../utils/camera';
 import {
   logMethodNotImplementedWarning,
@@ -187,38 +188,10 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
       heading={props.initialCamera?.heading}
       tilt={props.initialCamera?.pitch}
       onClick={(e) =>
-        props.onPress?.({
-          nativeEvent: {
-            action: 'press',
-            position: map
-              ?.getProjection()
-              ?.fromLatLngToPoint(e.latLng || { lat: 0, lng: 0 }) || {
-              x: 0,
-              y: 0,
-            },
-            coordinate: {
-              latitude: e.latLng?.lat() || 0,
-              longitude: e.latLng?.lng() || 0,
-            },
-          },
-        } as MapEvent<{}>)
+        props.onPress?.(mapMouseEventToMapEvent(e, null, map, 'press'))
       }
       onDblClick={(e) =>
-        props.onDoublePress?.({
-          nativeEvent: {
-            action: 'press',
-            position: map
-              ?.getProjection()
-              ?.fromLatLngToPoint(e.latLng || { lat: 0, lng: 0 }) || {
-              x: 0,
-              y: 0,
-            },
-            coordinate: {
-              latitude: e.latLng?.lat() || 0,
-              longitude: e.latLng?.lng() || 0,
-            },
-          },
-        } as MapEvent<{}>)
+        props.onDoublePress?.(mapMouseEventToMapEvent(e, null, map, 'press'))
       }
       center={{
         lat:
@@ -237,6 +210,8 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
         rotateControl: props.rotateEnabled,
         minZoom: props.minZoomLevel, // TODO: Normalize value
         maxZoom: props.maxZoomLevel, // TODO: Normalize value
+        scaleControl: props.showsScale,
+        ...(props.options || {}),
       }}
     >
       {props.children}

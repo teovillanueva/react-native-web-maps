@@ -2,12 +2,12 @@ name: Deploy to GitHub Pages
 
 defaults:
   run:
-    working-directory: docs
+    working-directory: website
 
 on:
   push:
     paths:
-      - 'docs/**'
+      - 'website/**'
     branches:
       - main
 

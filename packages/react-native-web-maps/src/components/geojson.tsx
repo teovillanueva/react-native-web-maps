@@ -29,7 +29,7 @@ export function Geojson(props: GeojsonProps) {
   const overlays = makeOverlays(props.geojson.features);
 
   return (
-    <React.Fragment>
+    <>
       {overlays.map((overlay, index) => {
         const fillColor = getColor(props, overlay, 'fill', 'fillColor');
         const strokeColor = getColor(props, overlay, 'stroke', 'strokeColor');
@@ -85,6 +85,6 @@ export function Geojson(props: GeojsonProps) {
 
         return null;
       })}
-    </React.Fragment>
+    </>
   );
 }

@@ -1,7 +1,5 @@
 module.exports = {
-  preset: 'react-native',
-  modulePathIgnorePatterns: [
-    '<rootDir>/example/node_modules',
-    '<rootDir>/dist/',
-  ],
+  testEnvironment: 'jsdom',
+  moduleDirectories: ['../../node_modules', 'node_modules', __dirname],
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
 };

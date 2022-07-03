@@ -1,4 +1,7 @@
-# `<MapView />` Component API support
+---
+sidebar_position: 1
+title: MapView ✅
+---
 
 ## Legend
 
@@ -8,8 +11,6 @@
 - Planned 🌲
 
 ## Props
-
-A
 
 | Prop                              | Status | Notes                                                          |
 | --------------------------------- | ------ | -------------------------------------------------------------- |
@@ -23,18 +24,18 @@ A
 | `mapType`                         | ❌     |                                                                |
 | `customMapStyle`                  | 🌲     |                                                                |
 | `userInterfaceStyle`              | ❌     |                                                                |
-| `showsUserLocation`               | ❌     |                                                                |
+| `showsUserLocation`               | 🌲     |                                                                |
 | `userLocationPriority`            | ❌     |                                                                |
-| `userLocationUpdateInterval`      | ❌     |                                                                |
+| `userLocationUpdateInterval`      | 🌲     |                                                                |
 | `userLocationFastestInterval`     | ❌     |                                                                |
 | `userLocationAnnotationTitle`     | ❌     |                                                                |
-| `followsUserLocation`             | ❌     |                                                                |
+| `followsUserLocation`             | 🌲     |                                                                |
 | `userLocationCalloutEnabled`      | ❌     |                                                                |
-| `showsMyLocationButton`           | ❌     |                                                                |
+| `showsMyLocationButton`           | 🌲     |                                                                |
 | `showsPointsOfInterest`           | ❌     |                                                                |
-| `showsCompass`                    | ❌     |                                                                |
-| `showsScale`                      | ❌     |                                                                |
-| `showsBuildings`                  | ❌     |                                                                |
+| `showsCompass`                    | 🌲     |                                                                |
+| `showsScale`                      | ✅     |                                                                |
+| `showsBuildings`                  | 🤔     |                                                                |
 | `showsTraffic`                    | ❌     |                                                                |
 | `showsIndoors`                    | ❌     |                                                                |
 | `showsIndoorLevelPicker`          | ❌     |                                                                |

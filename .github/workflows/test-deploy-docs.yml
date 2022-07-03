@@ -2,12 +2,12 @@ name: Test deployment
 
 defaults:
   run:
-    working-directory: docs
+    working-directory: website
 
 on:
   pull_request:
     paths:
-      - 'docs/**'
+      - 'website/**'
     branches:
       - main
 

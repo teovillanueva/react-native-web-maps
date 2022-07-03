@@ -12,13 +12,13 @@
     "packages": [
       "./packages/*",
       "./example",
-      "./docs"
+      "./website"
     ]
   },
   "scripts": {
     "example": "yarn --cwd example",
     "lib": "yarn --cwd packages/react-native-web-maps",
-    "docs": "yarn --cwd docs"
+    "website": "yarn --cwd website"
   },
   "repository": "https://github.com/teovillanueva/react-native-web-maps",
   "author": "Teodoro Villanueva <teodoro2102@gmail.com> (https://github.com/teovillanueva)",
