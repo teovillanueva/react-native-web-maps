@@ -1,40 +1,45 @@
 import { useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Platform } from 'react-native';
 import MapView, { Circle, Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 
+const MOCK_POSITION = true;
+
 export default function App() {
   const [permission] = Location.useForegroundPermissions({ request: true });
-  const [position, setPosition] = useState<Location.LocationObject>();
+  const [position, setPosition] = useState<Location.LocationObject | null>(
+    MOCK_POSITION
+      ? ({
+          coords: {
+            latitude: 55.59088363323221,
+            longitude: 13.005720334671018,
+          },
+          timestamp: Date.now(),
+        } as Location.LocationObject)
+      : null
+  );
 
   const mapRef = useRef<MapView>(null);
 
   useEffect(() => {
-    (async () => {
-      if (permission?.granted) {
-        const currentPosition = await Location.getCurrentPositionAsync();
-
-        setPosition(currentPosition);
-
-        mapRef.current?.animateCamera({
-          center: currentPosition.coords,
-          zoom: 16,
-        });
-      }
-    })();
+    if (!MOCK_POSITION && permission?.granted) {
+      Location.getCurrentPositionAsync().then(setPosition);
+    }
   }, [permission?.granted]);
+
+  useEffect(() => {
+    if (position) {
+      mapRef.current?.animateCamera({ center: position.coords, zoom: 16 });
+    }
+  }, [position, mapRef]);
 
   return (
     <View style={styles.container}>
       <MapView
         ref={mapRef}
         provider="google"
-        initialRegion={{
-          latitude: 1,
-          latitudeDelta: 0,
-          longitude: 1,
-          longitudeDelta: 0,
-        }}
+        onPress={(e) => console.log(e.nativeEvent)}
+        style={{ flex: 1 }}
         loadingFallback={
           <View>
             <Text>Loading</Text>
@@ -45,16 +50,44 @@ export default function App() {
         {position && (
           <>
             <Marker
+              anchor={{ x: 0.5, y: 1 }}
               coordinate={{
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude,
               }}
-            />
+            >
+              <View
+                style={{
+                  paddingHorizontal: 10,
+                  paddingVertical: 5,
+                  borderRadius: 999,
+                  backgroundColor: 'salmon',
+                  position: 'relative',
+                  zIndex: 19,
+                }}
+              >
+                <View
+                  style={{
+                    position: 'absolute',
+                    width: 10,
+                    height: 10,
+                    backgroundColor: 'salmon',
+                    zIndex: 20,
+                    bottom: -5,
+                    alignSelf: 'center',
+                    transform: [{ rotate: '45deg' }],
+                  }}
+                ></View>
+                <Text>You are here</Text>
+              </View>
+              {Platform.select({ native: <View style={{ height: 7 }}></View> })}
+            </Marker>
             <Circle
               center={{
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude,
               }}
+              fillColor="rgba(0,0,0,0.5)"
               radius={100}
             />
           </>

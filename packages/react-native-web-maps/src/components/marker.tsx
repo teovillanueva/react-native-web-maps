@@ -20,8 +20,8 @@ export function Marker(props: MarkerProps) {
       getPixelPositionOffset={
         props.anchor
           ? (w, h) => ({
-              x: (w * props.anchor!.x) / w,
-              y: (h * props.anchor!.y) / h,
+              x: -(w * props.anchor!.x),
+              y: -(h * props.anchor!.y),
             })
           : undefined
       }

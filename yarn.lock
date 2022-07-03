@@ -3216,7 +3216,7 @@
 
 "@teovilla/react-native-web-maps@*", "@teovilla/react-native-web-maps@file:/Users/teovillanueva/personal/projects/react-native-web-maps/packages/react-native-web-maps":
   "resolved" "file:packages/react-native-web-maps"
-  "version" "0.2.0"
+  "version" "0.2.1"
   dependencies:
     "@react-google-maps/api" "^2.12.0"
 
