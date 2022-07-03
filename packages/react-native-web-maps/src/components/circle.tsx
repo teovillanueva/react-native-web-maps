@@ -15,6 +15,7 @@ export function Circle(props: MapCircleProps) {
       options={{
         fillColor: props.fillColor,
         strokeColor: props.strokeColor,
+        zIndex: props.zIndex,
       }}
     />
   );
