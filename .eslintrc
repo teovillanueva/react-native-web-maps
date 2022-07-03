@@ -1,7 +1,8 @@
 {
   "root": true,
   "parser": "@babel/eslint-parser",
-  "extends": ["@react-native-community", "prettier"],
+  "extends": ["prettier"],
+  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": [
       "error",

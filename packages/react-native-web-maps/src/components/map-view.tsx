@@ -18,7 +18,7 @@ import type {
   SnapshotOptions,
 } from 'react-native-maps';
 import type RNMapView from 'react-native-maps';
-import { mapMouseEventToMapEvent } from 'src/utils/mouse-event';
+import { mapMouseEventToMapEvent } from '../utils/mouse-event';
 import { transformRNCameraObject } from '../utils/camera';
 import {
   logMethodNotImplementedWarning,
