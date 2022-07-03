@@ -17,6 +17,14 @@ export function Marker(props: MarkerProps) {
         lat: Number(props.coordinate.latitude),
         lng: Number(props.coordinate.longitude),
       }}
+      getPixelPositionOffset={
+        props.anchor
+          ? (w, h) => ({
+              x: (w * props.anchor!.x) / w,
+              y: (h * props.anchor!.y) / h,
+            })
+          : undefined
+      }
     >
       <div
         onClick={() =>
