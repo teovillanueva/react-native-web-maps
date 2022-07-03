@@ -1,6 +1,6 @@
 {
   "name": "@teovilla/react-native-web-maps",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "test",
   "main": "dist/commonjs/index",
   "module": "dist/module/index",
