@@ -27,6 +27,7 @@ import {
 } from '../utils/log';
 import { useUserLocation } from '../hooks/use-user-location';
 import { UserLocationMarker } from './user-location-marker';
+import * as Location from 'expo-location';
 
 function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
   const userLocation = useUserLocation({
@@ -134,7 +135,25 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
       },
       async addressForCoordinate(_coordinate: LatLng): Promise<Address> {
         logMethodNotImplementedWarning('addressForCoordinate');
-        return null as unknown as Address;
+        Location.setGoogleApiKey(props.googleMapsApiKey || '');
+        const [address] = await Location.reverseGeocodeAsync(_coordinate, {
+          useGoogleMaps: true,
+        });
+
+        return address
+          ? {
+              administrativeArea: address.region || '',
+              country: address.country || '',
+              countryCode: address.isoCountryCode || '',
+              locality: address.city || '',
+              postalCode: address.postalCode || '',
+              name: address.name || '',
+              subAdministrativeArea: address.subregion || '',
+              subLocality: address.city || '',
+              thoroughfare: '',
+              subThoroughfare: '',
+            }
+          : (null as unknown as Address);
       },
       animateToNavigation(
         _location: LatLng,
@@ -240,6 +259,7 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
         minZoom: props.minZoomLevel, // TODO: Normalize value
         maxZoom: props.maxZoomLevel, // TODO: Normalize value
         scaleControl: props.showsScale,
+        styles: props.customMapStyle,
         ...(props.options || {}),
       }}
     >

@@ -22,7 +22,7 @@ title: MapView ✅
 | `paddingAdjustmentBehavior`       | 🤔     |                                                                |
 | `liteMode`                        | ❌     |                                                                |
 | `mapType`                         | ❌     |                                                                |
-| `customMapStyle`                  | 🌲     |                                                                |
+| `customMapStyle`                  | ✅     |                                                                |
 | `userInterfaceStyle`              | ❌     |                                                                |
 | `showsUserLocation`               | ✅     |                                                                |
 | `userLocationPriority`            | ❌     |                                                                |
@@ -104,7 +104,7 @@ To access event data, you will need to use `e.nativeEvent`. For example, `onPres
 | `fitToElements`             | ❌     |
 | `fitToSuppliedMarkers`      | ❌     |
 | `fitToCoordinates`          | ✅     |
-| `addressForCoordinate`      | 🤔     |
+| `addressForCoordinate`      | ✅     |
 | `pointForCoordinate`        | ✅     |
 | `coordinateForPoint`        | ✅     |
 | `getMarkersFrames`          | ❌     |
