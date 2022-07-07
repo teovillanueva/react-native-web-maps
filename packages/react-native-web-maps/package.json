@@ -49,6 +49,7 @@
     "@types/geojson": "^7946.0.8",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.66.13",
+    "@types/supercluster": "^7.1.0",
     "jest": "^28.1.1",
     "jest-environment-jsdom": "^28.1.2",
     "nodemon": "^2.0.18",
@@ -56,7 +57,7 @@
     "react-dom": "^17.0.2",
     "react-native": "0.68.2",
     "react-native-builder-bob": "^0.18.2",
-    "react-native-maps": "^0.31.1",
+    "react-native-maps": "0.30.2",
     "release-it": "^15.0.0",
     "typescript": "^4.5.2"
   },
@@ -66,6 +67,7 @@
   "peerDependencies": {
     "@react-google-maps/api": "*",
     "expo-location": "*",
+    "react-native-maps": "*",
     "react": "*",
     "react-native": "*"
   },
@@ -103,6 +105,7 @@
   "dependencies": {
     "@react-google-maps/api": "^2.12.0",
     "expo-location": "~14.2.2",
-    "jest-expo": "^45.0.1"
+    "jest-expo": "^45.0.1",
+    "supercluster": "^7.1.5"
   }
 }

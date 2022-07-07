@@ -5,6 +5,7 @@ import type { EventUserLocation } from 'react-native-maps';
 interface UseUserLocationOptions {
   requestPermission: boolean;
   onUserLocationChange?(e: EventUserLocation): void;
+  followUserLocation: boolean;
 }
 
 export function useUserLocation(options: UseUserLocationOptions) {
@@ -39,7 +40,7 @@ export function useUserLocation(options: UseUserLocationOptions) {
   );
 
   useEffect(() => {
-    if (permission?.granted) {
+    if (permission?.granted && options.followUserLocation) {
       Location.getCurrentPositionAsync().then(handleLocationChange);
       // Watch position
       Location.watchPositionAsync(
@@ -49,7 +50,7 @@ export function useUserLocation(options: UseUserLocationOptions) {
     }
 
     return () => watchPositionSubscription?.remove();
-  }, [permission]);
+  }, [permission, options.followUserLocation]);
 
   return location;
 }

@@ -6,11 +6,16 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "dev": {
+      "dependsOn": ["^dev"],
+      "outputs": ["dist/**", ".expo/**", ".next/**"]
+    },
     "test": {
       "dependsOn": ["build"],
       "outputs": [],
       "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
     },
+
     "lint": {
       "outputs": []
     }
