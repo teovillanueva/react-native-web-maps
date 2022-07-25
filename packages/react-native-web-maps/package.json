@@ -21,7 +21,7 @@
     "lint": "eslint",
     "prepare": "yarn build",
     "build": "bob build",
-    "release": "cp ../../README.md ./README.md && git add ./README.md && release-it",
+    "release": "cp ../../README.md ./README.md && git add ./README.md && yarn build && release-it",
     "dev": "yarn nodemon --exec 'yarn bob build' --ignore dist --watch src -e ts,tsx"
   },
   "keywords": [
