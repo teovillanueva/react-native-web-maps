@@ -1,6 +1,6 @@
 {
   "name": "@teovilla/react-native-web-maps",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Cross platform maps for react & react-native",
   "main": "dist/commonjs/index",
   "module": "dist/module/index",
