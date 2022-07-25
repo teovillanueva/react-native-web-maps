@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "artalat",
+      "name": "Abdul Rehman Talat",
+      "avatar_url": "https://avatars.githubusercontent.com/u/295630?v=4",
+      "profile": "https://github.com/artalat",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "react-native-web-maps",
+  "projectOwner": "teovillanueva",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
