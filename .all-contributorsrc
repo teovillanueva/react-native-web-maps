@@ -6,15 +6,6 @@
   "commit": false,
   "contributors": [
     {
-      "login": "artalat",
-      "name": "Abdul Rehman Talat",
-      "avatar_url": "https://avatars.githubusercontent.com/u/295630?v=4",
-      "profile": "https://github.com/artalat",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
       "login": "teovillanueva",
       "name": "Teodoro Villanueva",
       "avatar_url": "https://avatars.githubusercontent.com/u/41754896?v=4",
@@ -22,6 +13,15 @@
       "contributions": [
         "maintenance",
         "doc",
+        "code"
+      ]
+    },
+    {
+      "login": "artalat",
+      "name": "Abdul Rehman Talat",
+      "avatar_url": "https://avatars.githubusercontent.com/u/295630?v=4",
+      "profile": "https://github.com/artalat",
+      "contributions": [
         "code"
       ]
     }
