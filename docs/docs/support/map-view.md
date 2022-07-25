@@ -69,7 +69,7 @@ To access event data, you will need to use `e.nativeEvent`. For example, `onPres
 | `onMapReady`              | ✅     |
 | `onKmlReady`              | ❌     |
 | `onRegionChange`          | ✅     |
-| `onRegionChangeComplete`  | 🤔     |
+| `onRegionChangeComplete`  | ✅     |
 | `onUserLocationChange`    | ✅     |
 | `onPress`                 | ✅     |
 | `onDoublePress`           | ✅     |

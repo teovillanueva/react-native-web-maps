@@ -34,6 +34,7 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
   // State
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
+  const [isGesture, setIsGesture] = useState<boolean>(false);
 
   const userLocation = useUserLocation({
     requestPermission:
@@ -56,6 +57,10 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
     [map, props.onMapReady]
   );
 
+  const _onDragStart = useCallback(() => {
+    setIsGesture(true);
+  }, []);
+
   const _onRegionChange = useCallback(() => {
     const bounds = map?.getBounds();
     if (bounds) {
@@ -64,14 +69,38 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
       const longitudeDelta = Math.abs(northEast.lng() - southWest.lng());
       const latitudeDelta = Math.abs(northEast.lat() - southWest.lat());
       const center = bounds.getCenter();
-      props.onRegionChange?.({
-        latitude: center.lat(),
-        longitude: center.lng(),
-        latitudeDelta,
-        longitudeDelta,
-      });
+      props.onRegionChange?.(
+        {
+          latitude: center.lat(),
+          longitude: center.lng(),
+          latitudeDelta,
+          longitudeDelta,
+        },
+        { isGesture }
+      );
     }
-  }, [map, props.onRegionChange]);
+  }, [map, props.onRegionChange, isGesture]);
+
+  const _onRegionChangeComplete = useCallback(() => {
+    const bounds = map?.getBounds();
+    if (bounds) {
+      const northEast = bounds.getNorthEast();
+      const southWest = bounds.getSouthWest();
+      const longitudeDelta = Math.abs(northEast.lng() - southWest.lng());
+      const latitudeDelta = Math.abs(northEast.lat() - southWest.lat());
+      const center = bounds.getCenter();
+      props.onRegionChangeComplete?.(
+        {
+          latitude: center.lat(),
+          longitude: center.lng(),
+          latitudeDelta,
+          longitudeDelta,
+        },
+        { isGesture }
+      );
+    }
+    setIsGesture(false);
+  }, [map, props.onRegionChange, isGesture]);
 
   // Ref handle
 
@@ -121,7 +150,25 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
         };
       },
       animateToRegion(region: Region, _duration?: number): void {
-        map?.panTo({ lat: region.latitude, lng: region.longitude });
+        const bounds = new google.maps.LatLngBounds();
+
+        // Source: https://github.com/react-native-maps/react-native-maps/blob/master/android/src/main/java/com/airbnb/android/react/maps/AirMapView.java#L503
+
+        // southWest
+        bounds.extend({
+          lat: region.latitude - region.latitudeDelta / 2,
+          lng: region.longitude - region.longitudeDelta / 2,
+        });
+
+        // northEast
+        bounds.extend({
+          lat: region.latitude + region.latitudeDelta / 2,
+          lng: region.longitude + region.longitudeDelta / 2,
+        });
+
+        // panToBounds not working??
+        // map?.panToBounds(bounds);
+        map?.fitBounds(bounds);
       },
       fitToCoordinates(
         coordinates?: LatLng[],
@@ -239,6 +286,8 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
       <GoogleMap
         onLoad={_onMapReady}
         onBoundsChanged={_onRegionChange}
+        onDragStart={_onDragStart}
+        onDragEnd={_onRegionChangeComplete}
         mapContainerStyle={{ flex: 1 }}
         zoom={props.initialCamera?.zoom || 3}
         heading={props.initialCamera?.heading}
