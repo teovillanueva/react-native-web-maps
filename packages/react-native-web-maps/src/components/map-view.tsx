@@ -310,16 +310,20 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
         onDblClick={(e) =>
           props.onDoublePress?.(mapMouseEventToMapEvent(e, null, map, 'press'))
         }
-        center={{
-          lat:
-            props.initialCamera?.center.latitude ||
-            props.initialRegion?.latitude ||
-            0,
-          lng:
-            props.initialCamera?.center.longitude ||
-            props.initialRegion?.longitude ||
-            0,
-        }}
+        center={
+          map
+            ? map.getCenter()
+            : {
+                lat:
+                  props.initialCamera?.center.latitude ||
+                  props.initialRegion?.latitude ||
+                  0,
+                lng:
+                  props.initialCamera?.center.longitude ||
+                  props.initialRegion?.longitude ||
+                  0,
+              }
+        }
         options={{
           scrollwheel: props.zoomEnabled,
           disableDoubleClickZoom: !props.zoomTapEnabled,
