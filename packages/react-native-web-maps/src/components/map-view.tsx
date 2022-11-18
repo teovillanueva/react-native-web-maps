@@ -52,10 +52,15 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
   const _onMapReady = useCallback(
     (_map: google.maps.Map) => {
       setMap(_map);
-      props.onMapReady?.();
     },
     [map, props.onMapReady]
   );
+
+  useEffect(() => {
+    if (map) {
+      props.onMapReady?.();
+    }
+  }, [map]);
 
   const _onDragStart = useCallback(() => {
     setIsGesture(true);
