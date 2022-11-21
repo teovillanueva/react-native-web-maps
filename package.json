@@ -1,5 +1,5 @@
 {
-  "name": "@teovilla/react-native-web-maps-root",
+  "name": "@staxy-app/react-native-web-maps-root",
   "version": "0.1.0",
   "description": "Cross platform maps for react & react-native",
   "main": "dist/commonjs/index",
@@ -16,9 +16,9 @@
     ]
   },
   "scripts": {
-    "lint": "turbo run lint --filter @teovilla/*",
-    "test": "turbo run test --filter @teovilla/*",
-    "build": "turbo run build --filter @teovilla/*",
+    "lint": "turbo run lint --filter @staxy/*",
+    "test": "turbo run test --filter @staxy/*",
+    "build": "turbo run build --filter @staxy/*",
     "dev": "turbo run dev",
     "example": "yarn --cwd example",
     "lib": "yarn --cwd packages/react-native-web-maps",

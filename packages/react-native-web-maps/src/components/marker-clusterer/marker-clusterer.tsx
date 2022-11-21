@@ -1,7 +1,7 @@
 import type { ClusterProps, MarkerClustererProps } from './types';
 
 import React, { memo, ReactElement, useMemo, useState } from 'react';
-import { getBoundByRegion } from '@teovilla/react-native-web-maps/src/utils/region';
+import { getBoundByRegion } from '@staxy-app/react-native-web-maps/src/utils/region';
 import type { MarkerProps } from 'react-native-maps';
 import { Cluster } from './cluster';
 import Supercluster from 'supercluster';
