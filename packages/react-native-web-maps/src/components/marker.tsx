@@ -8,10 +8,46 @@ import type { MarkerProps, Point } from 'react-native-maps';
 import { mapMouseEventToMapEvent } from '../utils/mouse-event';
 import { CalloutContext, CalloutContextType } from './callout';
 
-export function Marker(props: MarkerProps) {
-  const map = useGoogleMap();
+interface MarkerState {
+  calloutVisible: boolean;
+}
 
-  const [calloutVisible, setCalloutVisible] = React.useState(false);
+//Wrapped in class component to provide methods
+//forwardRef + useImperativeHandle not sufficient because it returns a ForwardRefExoticComponent which does not seem to render in the MapView
+export class Marker extends React.Component<MarkerProps, MarkerState> {
+  constructor(props: MarkerProps) {
+    super(props);
+    this.state = { calloutVisible: false };
+  }
+
+  showCallout() {
+    this.setState({ calloutVisible: true });
+  }
+
+  hideCallout() {
+    this.setState({ calloutVisible: false });
+  }
+
+  render(): React.ReactNode {
+    return (
+      <MarkerF
+        {...this.props}
+        calloutVisible={this.state.calloutVisible}
+        toggleCalloutVisible={() =>
+          this.setState({ calloutVisible: !this.state.calloutVisible })
+        }
+      />
+    );
+  }
+}
+
+interface MarkerFProps extends MarkerProps {
+  calloutVisible: boolean;
+  toggleCalloutVisible: () => void;
+}
+
+function MarkerF(props: MarkerFProps) {
+  const map = useGoogleMap();
 
   const customMarkerContainerRef = React.useRef<HTMLDivElement>();
   const [markerSize, setMarkerSize] = React.useState<{
@@ -32,7 +68,7 @@ export function Marker(props: MarkerProps) {
     props.onPress?.(
       mapMouseEventToMapEvent(e, props.coordinate, map, 'marker-press')
     );
-    setCalloutVisible(!calloutVisible);
+    props.toggleCalloutVisible();
   };
 
   const hasNonCalloutChildren = React.useMemo(
@@ -48,8 +84,8 @@ export function Marker(props: MarkerProps) {
   const calloutAnchor: Point = props.calloutAnchor || { x: 0.5, y: 0 };
 
   const calloutContextValue: CalloutContextType = {
-    calloutVisible,
-    toggleCalloutVisible: () => setCalloutVisible(!calloutVisible),
+    calloutVisible: props.calloutVisible,
+    toggleCalloutVisible: props.toggleCalloutVisible,
     coordinate: props.coordinate,
     markerSize,
     anchor: calloutAnchor,
