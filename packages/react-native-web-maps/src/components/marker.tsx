@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, Ref } from 'react';
 import {
   Marker as GMMarker,
   OverlayView as GMOverlayView,
@@ -12,21 +12,27 @@ export function Marker(props: MarkerProps) {
   const map = useGoogleMap();
 
   const [calloutVisible, setCalloutVisible] = React.useState(false);
-  const [mvcObjectAnchor, setMvcObjectAnchor] =
-    React.useState<google.maps.MVCObject>();
+
+  const customMarkerContainerRef = React.useRef<HTMLDivElement>();
+  const [markerSize, setMarkerSize] = React.useState<{
+    width: number;
+    height: number;
+  }>({ width: 22, height: 40 }); //22 x 40 is the default google maps marker size
+
+  React.useEffect(() => {
+    if (customMarkerContainerRef.current) {
+      setMarkerSize({
+        width: customMarkerContainerRef.current.clientWidth,
+        height: customMarkerContainerRef.current.clientHeight,
+      });
+    }
+  }, [customMarkerContainerRef.current]);
 
   const onMarkerPress = (e?: google.maps.MapMouseEvent) => {
     props.onPress?.(
       mapMouseEventToMapEvent(e, props.coordinate, map, 'marker-press')
     );
     setCalloutVisible(!calloutVisible);
-  };
-
-  const calloutContextValue: CalloutContextType = {
-    calloutVisible,
-    toggleCalloutVisible: () => setCalloutVisible(!calloutVisible),
-    coordinate: props.coordinate,
-    mvcObjectAnchor,
   };
 
   const hasNonCalloutChildren = React.useMemo(
@@ -37,7 +43,17 @@ export function Marker(props: MarkerProps) {
     [props.children]
   );
 
+  //Default anchor values to react-native-maps values (https://github.com/react-native-maps/react-native-maps/blob/master/docs/marker.md)
   const anchor: Point = props.anchor || { x: 0.5, y: 1 };
+  const calloutAnchor: Point = props.calloutAnchor || { x: 0.5, y: 0 };
+
+  const calloutContextValue: CalloutContextType = {
+    calloutVisible,
+    toggleCalloutVisible: () => setCalloutVisible(!calloutVisible),
+    coordinate: props.coordinate,
+    markerSize,
+    anchor: calloutAnchor,
+  };
 
   return (
     <CalloutContext.Provider value={calloutContextValue}>
@@ -53,9 +69,13 @@ export function Marker(props: MarkerProps) {
               x: -(w * anchor!.x),
               y: -(h * anchor!.y),
             })}
-            onLoad={(overlayView) => setMvcObjectAnchor(overlayView)}
           >
-            <div onClick={() => onMarkerPress()}>{props.children}</div>
+            <div
+              ref={customMarkerContainerRef as Ref<HTMLDivElement>}
+              onClick={() => onMarkerPress()}
+            >
+              {props.children}
+            </div>
           </GMOverlayView>
         ) : (
           <GMMarker
@@ -77,7 +97,6 @@ export function Marker(props: MarkerProps) {
                 mapMouseEventToMapEvent(e, props.coordinate, map, '')
               )
             }
-            onLoad={(marker) => setMvcObjectAnchor(marker)}
             options={{
               clickable: props.tappable,
               opacity: props.opacity,
