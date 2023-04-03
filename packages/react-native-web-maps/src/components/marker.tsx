@@ -4,7 +4,7 @@ import {
   OverlayView as GMOverlayView,
   useGoogleMap,
 } from '@react-google-maps/api';
-import type { MarkerProps } from 'react-native-maps';
+import type { MarkerProps, Point } from 'react-native-maps';
 import { mapMouseEventToMapEvent } from '../utils/mouse-event';
 import { CalloutContext, CalloutContextType } from './callout';
 
@@ -37,6 +37,8 @@ export function Marker(props: MarkerProps) {
     [props.children]
   );
 
+  const anchor: Point = props.anchor || { x: 0.5, y: 1 };
+
   return (
     <CalloutContext.Provider value={calloutContextValue}>
       <>
@@ -47,14 +49,10 @@ export function Marker(props: MarkerProps) {
               lat: Number(props.coordinate.latitude),
               lng: Number(props.coordinate.longitude),
             }}
-            getPixelPositionOffset={
-              props.anchor
-                ? (w, h) => ({
-                    x: -(w * props.anchor!.x),
-                    y: -(h * props.anchor!.y),
-                  })
-                : undefined
-            }
+            getPixelPositionOffset={(w, h) => ({
+              x: -(w * anchor!.x),
+              y: -(h * anchor!.y),
+            })}
             onLoad={(overlayView) => setMvcObjectAnchor(overlayView)}
           >
             <div onClick={() => onMarkerPress()}>{props.children}</div>
