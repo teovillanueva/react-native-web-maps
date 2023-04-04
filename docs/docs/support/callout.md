@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Callout 🤔
+title: Callout ✅
 ---
 
 ## Legend
@@ -10,4 +10,17 @@ title: Callout 🤔
 - Needs investigation 🤔
 - Planned 🌲
 
-This component is currently not supported, I still have to look at it since I've never used it before so I don't know really what's used for. I think that this can be created without using a component from the web API but instead making it from scratch. (should be easy)
+## Props
+
+| Prop           | Status |
+| -------------- | ------ |
+| `tooltip`      | ✅     |
+| `alphaHitTest` | ❌     |
+
+## Events
+
+To access event data, you will need to use `e.nativeEvent`. For example, `onPress={e => console.log(e.nativeEvent)}` will log the entire event object to your console.
+
+| Event Name | Status |
+| ---------- | ------ |
+| `onPress`  | ✅     |
