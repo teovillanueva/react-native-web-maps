@@ -23,7 +23,7 @@ title: Marker ✅
 | `centerOffset`            | 🤔     |
 | `calloutOffset`           | 🤔     |
 | `anchor`                  | ✅     |
-| `calloutAnchor`           | 🤔     |
+| `calloutAnchor`           | ✅     |
 | `flat`                    | ❌     |
 | `identifier`              | ❌     |
 | `rotation`                | ❌     |
@@ -54,8 +54,8 @@ To access event data, you will need to use `e.nativeEvent`. For example, `onPres
 
 | Method Name                 | Status |
 | --------------------------- | ------ |
-| `showCallout`               | ❌     |
-| `hideCallout`               | ❌     |
+| `showCallout`               | ✅     |
+| `hideCallout`               | ✅     |
 | `redrawCallout`             | ❌     |
 | `animateMarkerToCoordinate` | ❌     |
 | `redraw`                    | ❌     |
