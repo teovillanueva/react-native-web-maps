@@ -24,6 +24,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "tobysmith",
+      "name": "Toby Smith",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1110053?v=4",
+      "profile": "https://github.com/tobysmith",
+      "contributions": [
+        "doc",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -31,5 +41,6 @@
   "projectOwner": "teovillanueva",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
