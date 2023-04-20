@@ -24,6 +24,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "jbcsamonte",
+      "name": "Jayson Brian Samonte",
+      "avatar_url": "https://avatars.githubusercontent.com/u/109651638?v=4",
+      "profile": "https://github.com/jbcsamonte",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -31,5 +40,6 @@
   "projectOwner": "teovillanueva",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
