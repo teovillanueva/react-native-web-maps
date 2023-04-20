@@ -24,6 +24,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "YoussefHenna",
+      "name": "Youssef Henna",
+      "avatar_url": "https://avatars.githubusercontent.com/u/58384527?v=4",
+      "profile": "https://github.com/YoussefHenna",
+      "contributions": [
+        "doc",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -31,5 +41,6 @@
   "projectOwner": "teovillanueva",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
