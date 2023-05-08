@@ -1,6 +1,6 @@
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import type { ForwardedRef } from 'react';
 import React, {
-  ForwardedRef,
   forwardRef,
   memo,
   useCallback,
@@ -14,7 +14,7 @@ import type {
   Camera,
   EdgePadding,
   LatLng,
-  MapViewProps,
+  MapViewProps as RNMapViewProps,
   Point,
   Region,
   SnapshotOptions,
@@ -29,6 +29,13 @@ import {
 import { useUserLocation } from '../hooks/use-user-location';
 import { UserLocationMarker } from './user-location-marker';
 import * as Location from 'expo-location';
+
+export interface MapViewProps extends RNMapViewProps {
+  googleMapsApiKey?: string;
+  googleMapsMapId?: string;
+  loadingFallback?: JSX.Element;
+  options?: google.maps.MapOptions;
+}
 
 function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
   // State
@@ -230,7 +237,6 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
               subAdministrativeArea: address.subregion || '',
               subLocality: address.city || '',
               thoroughfare: '',
-              subThoroughfare: '',
             }
           : (null as unknown as Address);
       },

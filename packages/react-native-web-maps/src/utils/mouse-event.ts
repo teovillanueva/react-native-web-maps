@@ -1,11 +1,10 @@
-import type { EventActionType } from 'react-native-maps';
-import type { AnimatedRegion, LatLng, MapEvent } from 'react-native-maps';
+import type { AnimatedRegion, LatLng } from 'react-native-maps';
 
-export function mapMouseEventToMapEvent<A extends EventActionType | ''>(
+export function mapMouseEventToMapEvent<T>(
   e?: google.maps.MapMouseEvent | null,
   defaultCoordinate?: LatLng | AnimatedRegion | null,
   map?: google.maps.Map | null,
-  action?: A
+  action?: string
 ) {
   return {
     preventDefault: e?.stop,
@@ -21,5 +20,5 @@ export function mapMouseEventToMapEvent<A extends EventActionType | ''>(
         lng: e?.latLng?.lng() || Number(defaultCoordinate?.longitude) || 0,
       }) || { x: 0, y: 0 },
     },
-  } as MapEvent<any>;
+  } as T;
 }

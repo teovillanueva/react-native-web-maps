@@ -1,12 +1,14 @@
-import React, { ReactElement, Ref } from 'react';
+import React from 'react';
+import type { ReactElement, Ref } from 'react';
 import {
   Marker as GMMarker,
   OverlayView as GMOverlayView,
   useGoogleMap,
 } from '@react-google-maps/api';
-import type { MarkerProps, Point } from 'react-native-maps';
+import type { MapMarkerProps, Point } from 'react-native-maps';
 import { mapMouseEventToMapEvent } from '../utils/mouse-event';
-import { CalloutContext, CalloutContextType } from './callout';
+import { CalloutContext } from './callout';
+import type { CalloutContextType } from './callout';
 
 interface MarkerState {
   calloutVisible: boolean;
@@ -14,8 +16,8 @@ interface MarkerState {
 
 //Wrapped in class component to provide methods
 //forwardRef + useImperativeHandle not sufficient because it returns a ForwardRefExoticComponent which does not seem to render in the MapView
-export class Marker extends React.Component<MarkerProps, MarkerState> {
-  constructor(props: MarkerProps) {
+export class Marker extends React.Component<MapMarkerProps, MarkerState> {
+  constructor(props: MapMarkerProps) {
     super(props);
     this.state = { calloutVisible: false };
   }
@@ -41,7 +43,7 @@ export class Marker extends React.Component<MarkerProps, MarkerState> {
   }
 }
 
-interface MarkerFProps extends MarkerProps {
+interface MarkerFProps extends MapMarkerProps {
   calloutVisible: boolean;
   toggleCalloutVisible: () => void;
 }

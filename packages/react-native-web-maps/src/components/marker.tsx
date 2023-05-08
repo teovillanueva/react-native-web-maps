@@ -1,5 +1,5 @@
 import { Platform } from 'react-native';
-import type { MarkerProps } from 'react-native-maps';
+import type { MapMarkerProps } from 'react-native-maps';
 
 // react-native-maps's Native Marker Component
 /* 
@@ -14,7 +14,7 @@ Causing 'UIManager.getViewManagerConfig is not a function' error
 Not importing in 'react-native-maps' while on web prevents this file from running, and stops the issue.
 Possibly fixed when this issue is fixed: https://github.com/react-native-maps/react-native-maps/issues/4383
 */
-let Marker: React.ElementType<MarkerProps>;
+let Marker: React.ElementType<MapMarkerProps>;
 
 if (Platform.OS !== 'web') {
   Marker = require('react-native-maps').Marker;
