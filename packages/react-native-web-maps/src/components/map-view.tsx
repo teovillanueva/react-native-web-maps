@@ -14,7 +14,7 @@ import type {
   Camera,
   EdgePadding,
   LatLng,
-  MapViewProps as RNMapViewProps,
+  MapViewProps,
   Point,
   Region,
   SnapshotOptions,
@@ -29,13 +29,6 @@ import {
 import { useUserLocation } from '../hooks/use-user-location';
 import { UserLocationMarker } from './user-location-marker';
 import * as Location from 'expo-location';
-
-export interface MapViewProps extends RNMapViewProps {
-  googleMapsApiKey?: string;
-  googleMapsMapId?: string;
-  loadingFallback?: JSX.Element;
-  options?: google.maps.MapOptions;
-}
 
 function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
   // State

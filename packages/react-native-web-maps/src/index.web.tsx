@@ -1,4 +1,4 @@
-export { MapView as default, MapViewProps } from './components/map-view';
+export { MapView as default } from './components/map-view';
 export { Polygon } from './components/polygon';
 export { Marker } from './components/marker';
 export { Callout } from './components/callout';
