@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Marker } from 'react-native-maps';
+import { Marker } from '../marker';
 import type { ClusterProps } from './types';
 
 export function Cluster(props: ClusterProps) {
