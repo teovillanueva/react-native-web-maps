@@ -1,8 +1,8 @@
 import type { ClusterProps, MarkerClustererProps } from './types';
-
-import React, { memo, ReactElement, useMemo, useState } from 'react';
+import type { ReactElement } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import { getBoundByRegion } from '../../utils/region';
-import type { MarkerProps } from 'react-native-maps';
+import type { MapMarkerProps } from 'react-native-maps';
 import { Cluster } from './cluster';
 import Supercluster from 'supercluster';
 
@@ -18,7 +18,7 @@ function _MarkerClusterer(props: MarkerClustererProps) {
           ((child as ReactElement).type as Function).name === 'Marker' ||
           ((child as ReactElement).type as Function).name === 'MapMarker'
         );
-      }) as ReactElement<MarkerProps>[]) || [],
+      }) as ReactElement<MapMarkerProps>[]) || [],
     [props.children]
   );
 

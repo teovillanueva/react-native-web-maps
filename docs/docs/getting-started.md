@@ -19,12 +19,10 @@ You can find how to do this with the following guides
 
 ## 3. Actually using it
 
-There are some props that have been added to make this package work and give more customization options for web in some cases. So if you are using Typescript I recommend create a `types.ts` file in your project root and adding the following:
+There are some props that have been added to make this package work and give more customization options for web in some cases. So if you are using Typescript I recommend create a `app.d.ts` file in your project root and adding the following:
 
 ```ts
-// types.ts
-
-import '@teovilla/react-native-web-maps/src/override-types';
+/// <reference types="@teovilla/react-native-web-maps/dist/typescript/override-types" />
 ```
 
 Now that everything is setup you can start using your maps on web! But there is something else you need to know. Google maps requires an API key for it work on web, so there is one prop that has been added to the `<MapView />` component, it's the `googleMapsApiKey` prop. You should be passing your API key through that prop. There's also something important you should know, this only adds support for maps with `provider="google"` for now. So if you are trying to use Apple maps it will warn you about it.

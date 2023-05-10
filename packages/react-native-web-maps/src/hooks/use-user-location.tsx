@@ -1,10 +1,10 @@
 import * as Location from 'expo-location';
 import { useCallback, useEffect, useState } from 'react';
-import type { EventUserLocation } from 'react-native-maps';
+import type { UserLocationChangeEvent } from 'react-native-maps';
 
 interface UseUserLocationOptions {
   requestPermission: boolean;
-  onUserLocationChange?(e: EventUserLocation): void;
+  onUserLocationChange?(e: UserLocationChangeEvent): void;
   followUserLocation: boolean;
 }
 
@@ -34,7 +34,7 @@ export function useUserLocation(options: UseUserLocationOptions) {
             speed: e.coords.speed || 0,
           },
         },
-      } as unknown as EventUserLocation);
+      } as unknown as UserLocationChangeEvent);
     },
     [options.onUserLocationChange]
   );

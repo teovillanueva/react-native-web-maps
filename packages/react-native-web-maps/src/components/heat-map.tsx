@@ -5,7 +5,7 @@ import type { MapHeatmapProps } from 'react-native-maps';
 export function Heatmap(props: MapHeatmapProps) {
   return (
     <GMHeatmap
-      data={props.points.map((p) => ({
+      data={(props.points || []).map((p) => ({
         location: new google.maps.LatLng({
           lat: p.latitude,
           lng: p.longitude,
