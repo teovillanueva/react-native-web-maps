@@ -1,15 +1,14 @@
 import type { MapViewProps as RNMapViewProps } from 'react-native-maps/lib/MapView';
 
 /**
- * Declartion merging is not possible with the latest version of react-native-maps
- * due to the usage of type aliases instead of interfaces for the types
+ * Overrides MapView props to include additional web-specific props
  *
- * This is an imperfect solution that converts the type alias to an interface with additional props
- * Drawback: Does not update the declartion of the unerlying MapView component to use this new interface
+ * Add '/// <reference types="@teovilla/react-native-web-maps/dist/typescript/override-types" />'
+ * in the app.d.ts file of the app to get overriden types
  */
 
 declare module 'react-native-maps' {
-  //@ts-ignore
+  //@ts-ignore gets rid of 'Duplicate indetfier' error
   export interface MapViewProps extends RNMapViewProps {
     googleMapsApiKey?: string;
     googleMapsMapId?: string;
