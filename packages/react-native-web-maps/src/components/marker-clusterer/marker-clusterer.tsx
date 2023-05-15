@@ -5,6 +5,7 @@ import { getBoundByRegion } from '../../utils/region';
 import type { MapMarkerProps } from 'react-native-maps';
 import { Cluster } from './cluster';
 import Supercluster from 'supercluster';
+import { Marker } from '../marker';
 
 function _MarkerClusterer(props: MarkerClustererProps) {
   const [supercluster, _setSupercluster] = useState<
@@ -14,11 +15,7 @@ function _MarkerClusterer(props: MarkerClustererProps) {
   const markers = useMemo(
     () =>
       (React.Children.toArray(props.children).filter((child) => {
-        return (
-          ((child as ReactElement).type as Function).name === 'Marker' ||
-          ((child as ReactElement).type as Function).name === 'MapMarker' ||
-          'isMarker' in ((child as ReactElement).props || {})
-        );
+        return (child as ReactElement).type === Marker;
       }) as ReactElement<MapMarkerProps>[]) || [],
     [props.children]
   );

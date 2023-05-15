@@ -38,7 +38,6 @@ export function Geojson(props: GeojsonProps) {
         if (overlay.type === 'point') {
           return (
             <Marker
-              isMarker
               key={index}
               coordinate={overlay.coordinates as any}
               title={title}

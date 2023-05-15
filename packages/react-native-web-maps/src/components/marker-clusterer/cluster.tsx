@@ -5,7 +5,7 @@ import type { ClusterProps } from './types';
 
 export function Cluster(props: ClusterProps) {
   return (
-    <Marker isMarker coordinate={props.coordinate} anchor={{ x: 0.5, y: 0.5 }}>
+    <Marker coordinate={props.coordinate} anchor={{ x: 0.5, y: 0.5 }}>
       <View style={styles.container}>
         <Text style={styles.text}>{props.pointCountAbbreviated}</Text>
       </View>
