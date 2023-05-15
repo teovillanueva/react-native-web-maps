@@ -7,7 +7,7 @@ import {
 } from '@react-google-maps/api';
 import type { MapMarkerProps, Point } from 'react-native-maps';
 import { mapMouseEventToMapEvent } from '../utils/mouse-event';
-import { CalloutContext } from './callout';
+import { Callout, CalloutContext } from './callout';
 import type { CalloutContextType } from './callout';
 
 interface MarkerState {
@@ -76,7 +76,7 @@ function MarkerF(props: MarkerFProps) {
   const hasNonCalloutChildren = React.useMemo(
     () =>
       !!React.Children.toArray(props.children).find((child) => {
-        return ((child as ReactElement).type as Function).name !== 'Callout';
+        return (child as ReactElement).type !== Callout;
       }),
     [props.children]
   );
