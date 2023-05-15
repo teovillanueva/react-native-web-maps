@@ -16,7 +16,8 @@ function _MarkerClusterer(props: MarkerClustererProps) {
       (React.Children.toArray(props.children).filter((child) => {
         return (
           ((child as ReactElement).type as Function).name === 'Marker' ||
-          ((child as ReactElement).type as Function).name === 'MapMarker'
+          ((child as ReactElement).type as Function).name === 'MapMarker' ||
+          'isMarker' in ((child as ReactElement).props || {})
         );
       }) as ReactElement<MapMarkerProps>[]) || [],
     [props.children]

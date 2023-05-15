@@ -76,7 +76,10 @@ function MarkerF(props: MarkerFProps) {
   const hasNonCalloutChildren = React.useMemo(
     () =>
       !!React.Children.toArray(props.children).find((child) => {
-        return ((child as ReactElement).type as Function).name !== 'Callout';
+        return (
+          ((child as ReactElement).type as Function).name !== 'Callout' &&
+          !('isCallout' in ((child as ReactElement).props || {}))
+        );
       }),
     [props.children]
   );

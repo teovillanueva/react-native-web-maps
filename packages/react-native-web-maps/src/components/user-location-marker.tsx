@@ -9,7 +9,7 @@ interface UserLocationMarkerProps {
 
 export function UserLocationMarker(props: UserLocationMarkerProps) {
   return (
-    <Marker coordinate={props.coordinates} anchor={{ x: 0.5, y: 0.5 }}>
+    <Marker isMarker coordinate={props.coordinates} anchor={{ x: 0.5, y: 0.5 }}>
       <View style={styles.container} />
     </Marker>
   );
