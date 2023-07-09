@@ -37,6 +37,7 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
   const [isGesture, setIsGesture] = useState<boolean>(false);
 
   const userLocation = useUserLocation({
+    showUserLocation: props.showsUserLocation || false,
     requestPermission:
       props.showsUserLocation || !!props.onUserLocationChange || false,
     onUserLocationChange: props.onUserLocationChange,
