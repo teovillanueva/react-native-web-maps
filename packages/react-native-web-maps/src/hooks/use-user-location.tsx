@@ -6,6 +6,7 @@ interface UseUserLocationOptions {
   requestPermission: boolean;
   onUserLocationChange?(e: UserLocationChangeEvent): void;
   followUserLocation: boolean;
+  showUserLocation: boolean;
 }
 
 export function useUserLocation(options: UseUserLocationOptions) {
@@ -16,7 +17,7 @@ export function useUserLocation(options: UseUserLocationOptions) {
 
   const [permission] = Location.useForegroundPermissions({
     request: options.requestPermission,
-    get: true,
+    get: options.showUserLocation,
   });
 
   const handleLocationChange = useCallback(
