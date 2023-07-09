@@ -25,7 +25,7 @@
         "code"
       ]
     },
-        {
+    {
       "login": "tobysmith",
       "name": "Toby Smith",
       "avatar_url": "https://avatars.githubusercontent.com/u/1110053?v=4",
@@ -44,6 +44,15 @@
         "doc",
         "code"
       ]
+    },
+    {
+      "login": "sreuter",
+      "name": "Sascha Reuter",
+      "avatar_url": "https://avatars.githubusercontent.com/u/550246?v=4",
+      "profile": "https://github.com/sreuter",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -52,5 +61,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
