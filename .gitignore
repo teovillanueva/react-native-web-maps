@@ -9,6 +9,8 @@
 .vscode/
 jsconfig.json
 
+yarn.lock
+
 # Xcode
 #
 build/
