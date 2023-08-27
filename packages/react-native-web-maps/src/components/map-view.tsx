@@ -333,6 +333,7 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
           maxZoom: props.maxZoomLevel, // TODO: Normalize value
           scaleControl: props.showsScale,
           styles: props.customMapStyle,
+          streetViewControl: props.streetViewControl,
           ...(props.options || {}),
         }}
       >
@@ -359,6 +360,7 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
       props.maxZoomLevel,
       props.showsScale,
       props.customMapStyle,
+      props.streetViewControl,
       props.options,
     ]
   );
