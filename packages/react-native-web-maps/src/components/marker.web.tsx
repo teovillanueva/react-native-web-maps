@@ -2,7 +2,7 @@ import React from 'react';
 import type { ReactElement, Ref } from 'react';
 import {
   Marker as GMMarker,
-  OverlayView as GMOverlayView,
+  OverlayViewF as GMOverlayView,
   useGoogleMap,
 } from '@react-google-maps/api';
 import type { MapMarkerProps, Point } from 'react-native-maps';
