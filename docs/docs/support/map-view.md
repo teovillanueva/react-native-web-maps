@@ -47,6 +47,7 @@ title: MapView ✅
 | `rotateEnabled`                   | ✅     |                                                                |
 | `scrollEnabled`                   | 🤔     |                                                                |
 | `scrollDuringRotateOrZoomEnabled` | 🤔     |                                                                |
+| `streetViewControl`               | ✅     | Setting this false removes the corner button for street view.  |
 | `pitchEnabled`                    | ✅     |                                                                |
 | `toolbarEnabled`                  | ❌     |                                                                |
 | `cacheEnabled`                    | ❌     |                                                                |
