@@ -339,6 +339,7 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
         {props.showsUserLocation && userLocation && (
           <UserLocationMarker coordinates={userLocation.coords} />
         )}
+        {props.children}
       </GoogleMap>
     ),
     [
@@ -372,7 +373,7 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
   }
 
   return isLoaded ? (
-    React.cloneElement(mapNode, { children: props.children })
+    React.cloneElement(mapNode)
   ) : (
     <>{props.loadingFallback || null}</>
   );
