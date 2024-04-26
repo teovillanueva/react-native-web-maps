@@ -29,6 +29,8 @@ import {
 import { useUserLocation } from '../hooks/use-user-location';
 import { UserLocationMarker } from './user-location-marker';
 import * as Location from 'expo-location';
+import { createRoot } from 'react-dom/client';
+import { CurrentLocationButton } from './user-location-button';
 
 function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
   // State
@@ -280,6 +282,33 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
       });
     }
   }, [props.followsUserLocation, userLocation]);
+
+  const panToUserLocation = () => {
+    if (map && userLocation) {
+      map?.panTo({
+        lat: userLocation.coords.latitude,
+        lng: userLocation.coords.longitude,
+      });
+      map?.setZoom(15);
+    }
+  };
+
+  useEffect(() => {
+    if (props.showsMyLocationButton) {
+      const buttonDiv = document.createElement('div');
+      const rootElem = createRoot(buttonDiv);
+      rootElem.render(
+        <CurrentLocationButton onPressCurrentLocation={panToUserLocation} />
+      );
+
+      map?.controls[google.maps.ControlPosition.RIGHT_BOTTOM]?.setAt(
+        0,
+        buttonDiv
+      );
+    } else {
+      map?.controls[google.maps.ControlPosition.RIGHT_BOTTOM]?.pop();
+    }
+  }, [props.showsMyLocationButton, userLocation]);
 
   const mapNode = useMemo(
     () => (
