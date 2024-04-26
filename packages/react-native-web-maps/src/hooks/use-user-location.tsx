@@ -42,12 +42,14 @@ export function useUserLocation(options: UseUserLocationOptions) {
 
   useEffect(() => {
     if (permission?.granted && options.followUserLocation) {
-      Location.getCurrentPositionAsync().then(handleLocationChange);
       // Watch position
       Location.watchPositionAsync(
         { accuracy: Location.Accuracy.Balanced },
         handleLocationChange
       ).then(setWatchPositionSubscription);
+    } else if (permission?.granted) {
+      // Set location
+      Location.getCurrentPositionAsync().then(handleLocationChange);
     }
 
     return () => watchPositionSubscription?.remove();
