@@ -288,6 +288,7 @@ function _MapView(props: MapViewProps, ref: ForwardedRef<Partial<RNMapView>>) {
         onBoundsChanged={_onRegionChange}
         onDragStart={_onDragStart}
         onDragEnd={_onRegionChangeComplete}
+        onZoomChanged={_onRegionChangeComplete}
         mapContainerStyle={{ flex: 1 }}
         zoom={props.initialCamera?.zoom || 3}
         heading={props.initialCamera?.heading}
